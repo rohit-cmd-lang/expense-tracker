@@ -1,0 +1,53 @@
+.add-balance {
+  width: 538px;
+  height: 164px;
+  background: #efefefd9;
+  border-radius: 1rem;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.add-balance-heading {
+  font-family: Ubuntu;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 34.47px;
+  text-align: left;
+  background: #000000;
+  margin-bottom: 1rem;
+}
+.add-balance-input-buttons {
+  display: flex;
+  gap: 1rem;
+}
+.add-balance-btn {
+  width: 145px;
+  height: 51px;
+  background: #f4bb4a;
+  border-radius: 1rem;
+  text-align: center;
+  border: none;
+  font-family: Open Sans;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 21.79px;
+  color: #ffffff;
+  box-shadow: 0px 4px 4px 0px #00000040;
+}
+.add-balance-btn-cancel {
+  width: 112px;
+  height: 51px;
+  font-family: Open Sans;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 21.79px;
+  text-align: center;
+  color: #000000;
+  border-radius: 1rem;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  background: #e3e3e3;
+  border: none;
+
+  cursor: pointer;
+}
