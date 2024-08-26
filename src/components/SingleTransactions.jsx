@@ -14,9 +14,12 @@ const SingleTransactions = ({ handleClose, open, handleOpen, expense }) => {
   const dispatch = useDispatch();
 
   const handleDeleteExpense = () => {
-    confirm("Are you sure you want to delete this expense?");
-    dispatch(deleteExpense(expense.id));
-    handleClose();
+    if (window.confirm("Are you sure you want to delete this expense?")) {
+      dispatch(deleteExpense(expense.id));
+      handleClose();
+    } else {
+      return;
+    }
   };
 
   return (
