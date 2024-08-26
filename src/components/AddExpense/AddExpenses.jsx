@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { enqueueSnackbar } from "notistack";
 import { addExpense, editExpense } from "../../features/walletSlice";
 const AddExpenses = ({ handleClose, type, expense }) => {
-  const [inputType, setInputType] = useState("text");
   const dispatch = useDispatch();
   const balance = useSelector((state) => state.wallet.balance);
 
@@ -20,7 +19,7 @@ const AddExpenses = ({ handleClose, type, expense }) => {
       setCategory(expense.category);
       setDate(expense.date);
     }
-  }, [expense]);
+  }, [expense, type]);
   const handleAddExpense = () => {
     const expenseAmount = parseInt(amount);
     if (expenseAmount > balance) {
@@ -97,11 +96,9 @@ const AddExpenses = ({ handleClose, type, expense }) => {
           <option value="Travel">Travel</option>
         </select>
         <input
-          type={inputType}
+          type="date"
           className="input"
           placeholder="dd/mm/yyyy"
-          onFocus={() => setInputType("date")}
-          onBlur={() => setInputType("text")}
           value={date}
           onChange={(e) => setDate(e.target.value)}
         />

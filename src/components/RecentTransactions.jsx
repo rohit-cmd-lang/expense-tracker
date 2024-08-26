@@ -4,20 +4,26 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import { GoArrowRight, GoArrowLeft } from "react-icons/go";
 
-const RecentTransactions = ({ handleClose, open, handleOpen }) => {
+const RecentTransactions = ({
+  handleClose,
+  open,
+  handleOpen,
+  selectedExpense,
+}) => {
   const expenses = useSelector((state) => state.wallet.expenses);
+  const reversedExpenses = [...expenses].reverse();
 
   const [currentPage, setCurrentPage] = useState(1);
   const transactionsPerPage = 3;
 
+  const totalPages = Math.ceil(reversedExpenses.length / transactionsPerPage);
+
   const indexOfLastTransaction = currentPage * transactionsPerPage;
   const indexOfFirstTransaction = indexOfLastTransaction - transactionsPerPage;
-  const currentTransactions = expenses.slice(
+  const currentTransactions = reversedExpenses.slice(
     indexOfFirstTransaction,
     indexOfLastTransaction
   );
-
-  const totalPages = Math.ceil(expenses.length / transactionsPerPage);
 
   if (expenses.length === 0) {
     return (
@@ -88,8 +94,10 @@ const RecentTransactions = ({ handleClose, open, handleOpen }) => {
               key={expense.id}
               expense={expense}
               handleClose={handleClose}
-              open={open}
-              handleOpen={handleOpen}
+              open={
+                open && selectedExpense && selectedExpense.id === expense.id
+              }
+              handleOpen={() => handleOpen(expense)}
             />
           ))}
         <div
@@ -147,7 +155,7 @@ const RecentTransactions = ({ handleClose, open, handleOpen }) => {
               height: "37px",
               textAlign: "center",
               borderRadius: "1rem",
-              cursor: currentPage === 1 ? "not-allowed" : "pointer",
+              cursor: currentPage === totalPages ? "not-allowed" : "pointer",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",

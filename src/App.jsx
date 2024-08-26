@@ -6,10 +6,18 @@ import WalletSummary from "./components/WalletSummary";
 import { useState } from "react";
 
 function App() {
+  const [selectedExpense, setSelectedExpense] = useState(null);
   const [open, setOpen] = useState(false);
-  const handleModalOpen = () => setOpen(true);
-  const handleModalClose = () => setOpen(false);
+  const handleModalOpen = (expense) => {
+    setSelectedExpense(expense);
+    setOpen(true);
+  };
+  const handleModalClose = () => {
+    setOpen(false);
+    setSelectedExpense(null);
+  };
   const [modalType, setModalType] = useState(null);
+
   const handleOpen = (type) => setModalType(type);
   const handleClose = () => setModalType(null);
 
@@ -41,6 +49,7 @@ function App() {
           handleClose={handleModalClose}
           open={open}
           handleOpen={handleModalOpen}
+          selectedExpense={selectedExpense}
         />
         <ExpenseChart />
       </div>

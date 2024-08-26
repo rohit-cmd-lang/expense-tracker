@@ -9,7 +9,12 @@ import { useDispatch } from "react-redux";
 import { deleteExpense } from "../features/walletSlice";
 
 const SingleTransactions = ({ handleClose, open, handleOpen, expense }) => {
-  const { title, amount } = expense;
+  const { title, amount, date } = expense;
+  const formattedDate = new Date(date).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 
   const dispatch = useDispatch();
 
@@ -50,7 +55,7 @@ const SingleTransactions = ({ handleClose, open, handleOpen, expense }) => {
 
         <div>
           <p>{title}</p>
-          <p style={{ color: "#9B9B9B" }}>July 10 2024</p>
+          <p style={{ color: "#9B9B9B" }}>{formattedDate}</p>
         </div>
       </div>
       <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
