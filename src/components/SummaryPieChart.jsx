@@ -26,7 +26,7 @@ const SummaryPieChart = () => {
   //   { name: "Food", value: 300 },
   //   { name: "Travel", value: 100 },
   // ];
-  const COLORS = ["#FF9304", "#A000FF", "#FDE006"];
+  const COLORS = ["#A000FF", "#FF9304", "#FDE006"];
   const RADIAN = Math.PI / 180;
   const renderCustomizedLabel = ({
     cx,
